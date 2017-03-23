@@ -46,10 +46,10 @@ Example
                 'example=example.__main__:main',
             ],
         },
-		install_requires=[
+        install_requires=[
             'PyQt5',
             'Qt.py',
-		],
+        ],
         options=[
             'build_qt': {
                 'packages': ['example'],
