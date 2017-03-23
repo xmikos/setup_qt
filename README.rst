@@ -11,7 +11,7 @@ Requirements
 ------------
 
 - Python >= 3.4
-- Setuptools (https://github.com/pypa/setuptools>)
+- Setuptools (https://github.com/pypa/setuptools)
 - PyQt4 / PyQt5 / PySide / PySide2
 
 Example
