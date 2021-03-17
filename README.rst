@@ -50,7 +50,7 @@ Example
             'PyQt5',
             'Qt.py',
         ],
-        options=[
+        options={
             'build_qt': {
                 'packages': ['example'],
                 'languages': ['cs'],           # optional
@@ -58,7 +58,7 @@ Example
                 'bindings': 'PyQt5',           # optional ('PyQt5' is default)
                 'replacement_bindings': 'Qt',  # optional (for Qt.py wrapper usage)
             },
-        ],
+        },
         cmdclass={
             'build_qt': build_qt,
         },
