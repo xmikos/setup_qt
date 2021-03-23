@@ -19,7 +19,9 @@ class build_qt(setuptools.Command):
         ('bindings=', None, 'Qt binding from which to use pyrcc, pyuic and pylupdate commands (default is PyQt5)'),
         ('replacement-bindings=', None, 'Qt bindings replacement (e.g. if using wrapper like Qt.py or QtPy)'),
         ('pyrcc=', None, 'pyrcc command executable'),
+        ('pyrcc-args=', None, 'pyrcc arguments (see output of \'pyrcc --help\')',
         ('pyuic=', None, 'pyuic command executable'),
+        ('pyuic-args=', None, 'pyuic arguments (see output of \'pyuic --help\')',
         ('pylupdate=', None, 'pylupdate command executable'),
         ('lrelease=', None, 'lrelease command executable'),
         ('filename-qrc=', None, 'name template for .py files compiled from .qrc files'),
@@ -34,7 +36,9 @@ class build_qt(setuptools.Command):
         self.bindings = 'PyQt5'
         self.replacement_bindings = ''
         self.pyrcc = 'pyrcc5'
+        self.pyrcc_args = []
         self.pyuic = 'pyuic5'
+        self.pyuic_args = []
         self.pylupdate = 'pylupdate5'
         self.lrelease = 'lrelease'
         self.filename_qrc = 'qrc_{name}.py'
@@ -57,7 +61,7 @@ class build_qt(setuptools.Command):
                 log.info("compiling {} Qt resource files...".format(package))
                 for f in package_path.glob('**/*.qrc'):
                     f_compiled = f.with_name(self.filename_qrc.format(name=f.stem))
-                    ret = subprocess.call([self.pyrcc, '-o', f_compiled, f])
+                    ret = subprocess.call([self.pyrcc] + self.pyrcc_args + ['-o', f_compiled, f])
                     if ret != 0:
                         log.error('error compiling .qrc file: {}'.format(f))
 
@@ -65,7 +69,7 @@ class build_qt(setuptools.Command):
                 log.info("compiling {} Qt UI files...".format(package))
                 for f in package_path.glob('**/*.ui'):
                     f_compiled = f.with_name(self.filename_ui.format(name=f.stem))
-                    ret = subprocess.call([self.pyuic, '-o', f_compiled, f])
+                    ret = subprocess.call([self.pyuic] + self.pyuic_args + ['-o', f_compiled, f])
                     if ret != 0:
                         log.error('error compiling .ui file: {}'.format(f))
 
