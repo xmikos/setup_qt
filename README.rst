@@ -90,7 +90,9 @@ Help
       --replacement-bindings  Qt bindings replacement (e.g. if using wrapper like
                               Qt.py or QtPy)
       --pyrcc                 pyrcc command executable
+      --pyrcc-args            pyrcc arguments (for options, see output of 'pyrcc --help')
       --pyuic                 pyuic command executable
+      --pyuic-args            pyuic arguments (for options, see output of 'pyuic --help')
       --pylupdate             pylupdate command executable
       --lrelease              lrelease command executable
       --filename-qrc          name template for .py files compiled from .qrc files
